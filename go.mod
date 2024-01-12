@@ -1,4 +1,4 @@
-module github.com/algotuners/zerodha-sdk-go
+module github.com/algotuners/zerodha-free-tier-go_sdk
 
 go 1.20
 

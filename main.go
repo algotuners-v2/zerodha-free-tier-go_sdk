@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	kiteticker "github.com/algotuners/zerodha-sdk-go/pkg"
+	kiteticker "github.com/algotuners/zerodha-free-tier-go_sdk/pkg"
 	kiteconnect "github.com/zerodha/gokiteconnect/v4"
 	"github.com/zerodha/gokiteconnect/v4/models"
 	"os"
