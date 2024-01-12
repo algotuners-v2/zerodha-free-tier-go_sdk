@@ -87,6 +87,16 @@ type Instrument struct {
 
 type Instruments []Instrument
 
+var (
+	maxDayLimitOnTimeFrame = map[string]int{
+		"minute":   60,
+		"5minute":  100,
+		"15minute": 200,
+		"60minute": 400,
+		"day":      2000,
+	}
+)
+
 func (kiteHttpClient *KiteHttpClient) GetQuote(instruments ...string) Quote {
 	var (
 		err     error
@@ -261,6 +271,24 @@ func (kiteHttpClient *KiteHttpClient) GetHistoricalData(instrumentToken int, int
 	}
 
 	return kiteHttpClient.formatHistoricalData(resp)
+}
+
+func (KiteHttpClient *KiteHttpClient) GetHistoricalDataV2(instrumentToken int, interval string, fromDate time.Time, toDate time.Time, continuous bool, OI bool) []HistoricalData {
+	maxDays := maxDayLimitOnTimeFrame[interval]
+	startDate := fromDate
+	endDate := toDate
+	var candleData []HistoricalData
+	for startDate.Before(endDate) {
+		apiLimitDate := endDate
+		if startDate.Add(time.Duration(maxDays) * 24 * time.Hour).Before(endDate) {
+			apiLimitDate = startDate.Add(time.Duration(maxDays) * 24 * time.Hour)
+		}
+		currentHistoricalData := KiteHttpClient.GetHistoricalData(instrumentToken, interval, startDate, apiLimitDate, false, false)
+		candleData = append(candleData, currentHistoricalData...)
+		startDate = apiLimitDate.AddDate(0, 0, 1)
+		time.Sleep(time.Millisecond * 350)
+	}
+	return candleData
 }
 
 func (kiteHttpClient *KiteHttpClient) parseInstruments(data interface{}, url string, params url.Values) error {
