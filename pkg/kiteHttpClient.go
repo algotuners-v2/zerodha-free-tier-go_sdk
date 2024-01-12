@@ -2,8 +2,8 @@ package pkg
 
 import (
 	"fmt"
-	"github.com/algotuners/zerodha-free-tier-go_sdk/pkg/constants"
-	httpUtils2 "github.com/algotuners/zerodha-free-tier-go_sdk/pkg/httpUtils"
+	"github.com/algotuners-v2/zerodha-free-tier-go_sdk/pkg/constants"
+	httpUtils2 "github.com/algotuners-v2/zerodha-free-tier-go_sdk/pkg/httpUtils"
 	"net/http"
 	"net/url"
 	"time"

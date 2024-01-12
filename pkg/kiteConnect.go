@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"github.com/algotuners/zerodha-free-tier-go_sdk/pkg/constants"
+	"github.com/algotuners-v2/zerodha-free-tier-go_sdk/pkg/constants"
 	"net/http"
 )
 

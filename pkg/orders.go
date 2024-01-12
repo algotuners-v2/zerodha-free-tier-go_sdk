@@ -2,8 +2,8 @@ package pkg
 
 import (
 	"fmt"
-	"github.com/algotuners/zerodha-free-tier-go_sdk/pkg/constants"
-	"github.com/algotuners/zerodha-free-tier-go_sdk/pkg/httpUtils"
+	"github.com/algotuners-v2/zerodha-free-tier-go_sdk/pkg/constants"
+	"github.com/algotuners-v2/zerodha-free-tier-go_sdk/pkg/httpUtils"
 	"github.com/google/go-querystring/query"
 	"github.com/zerodha/gokiteconnect/v4/models"
 	"net/http"
